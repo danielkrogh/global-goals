@@ -1,14 +1,33 @@
 # global-goals
 
+## Arrow function
 ```js
-// Vi har et array med fornavn og efternavn
-let arr = ["Jens", "Jensen"]
+document.body.addEventListener('click', () => {
+    let overlay = document.querySelector('#overlay');
 
-// destructuring assignment
-// sætter firstName = arr[0]
-// og lastname = arr[1]
-let [firstName, lastName] = arr;
+    if(overlay) {
+        overlay.remove();
+    }
+})
+```
 
-alert(firstName); // Jens
-alert(lastName);  // Jensen
+## Closures
+```js
+
+```
+## Rest Parameter
+```js
+
+```
+## Spread Operator
+```js
+
+```
+## Destructuring Assignment
+```js
+
+```
+## Error Catching
+```js
+
 ```
