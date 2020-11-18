@@ -28,15 +28,27 @@ async function handleGoalData() {
 ```
 ## Rest Parameter
 ```js
+// Funtion der tager imod array med uendelig antal argumenter
+async function fetchSpecificGoalData(...id) {
+    let response = await fetch(`https://api.mediehuset.net/sdg/goals/${id}`);
+    let data = await response.json();
+    let dataArray = []
+    dataArray.push(data.item)
 
+    return dataArray;
+};
 ```
 ## Spread Operator
 ```js
-
+// Spread operator benyttes til at kopiering af array
+async function handleGoalData() {
+    let goalsData = [...await fetchGoalsData()];
+};
 ```
 ## Destructuring Assignment
 ```js
-
+// Array destrukturering
+let [specificGoalData] = specificGoalDataArray;
 ```
 ## Error Catching
 ```js

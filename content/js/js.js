@@ -15,7 +15,7 @@ async function handleGoalData() {
     let sortedGoalsData = []
 
     goalsData.forEach(goal => {
-        let data = [goal.title, goal.icon, `#${goal.color}`, goal.id];
+        let data = {title: goal.title, icon: goal.icon, color: `#${goal.color}`, id: goal.id};
 
         sortedGoalsData.push(data);
     })
@@ -24,7 +24,7 @@ async function handleGoalData() {
 };
 
 // Fetch af specifik verdensmål udfra id
-async function fetchSpecificGoalData(id) {
+async function fetchSpecificGoalData(...id) {
     let response = await fetch(`https://api.mediehuset.net/sdg/goals/${id}`);
     let data = await response.json();
     let dataArray = []
@@ -39,7 +39,7 @@ async function handleSpecificGoalData(id) {
     let sortedSpecificGoalData = []
 
     specificGoalData.forEach(specificGoal => {
-        let specificData = [specificGoal.description, `#${specificGoal.color}`, specificGoal.targets];
+        let specificData = {description: specificGoal.description, color: `#${specificGoal.color}`, targets: specificGoal.targets};
 
         sortedSpecificGoalData.push(specificData);
     })
@@ -57,10 +57,10 @@ async function setGoalView() {
 
     goalData.forEach(goal => { // For hvert mål laves HTML som tilføjes til vores container
         let imgHTML =
-            `<div class="goal" data-id="${goal[3]}" style="background-color:${goal[2]}">
+            `<div class="goal" data-id="${goal.id}" style="background-color:${goal.color}">
                 <div>
-                    <h2>${goal[0]}</h2>
-                    ${goal[1]}
+                    <h2>${goal.title}</h2>
+                    ${goal.icon}
                 </div>
             </div>`;
 
@@ -73,19 +73,20 @@ async function setGoalView() {
         setSpecificGoalView(htmlGoal.getAttribute('data-id')); // Kalder funktion med id fra klikket mål
 
         async function setSpecificGoalView(id) {
-            let specificGoalData = [...await handleSpecificGoalData(id)]; // Får fat i data ang. klikket mål
+            let specificGoalDataArray = [...await handleSpecificGoalData(id)]; // Får fat i data ang. klikket mål
+            let [specificGoalData] = specificGoalDataArray;
 
             let html = // Overlay med målets baggrundsfarve og beskrivelse
-            `<div id="overlay" style="background-color:${specificGoalData[0][1]}">
+            `<div id="overlay" style="background-color:${specificGoalData.color}">
                 <div class="container">
                     <h1>Beskrivelse af mål ${id}</h1>
-                    <p>${specificGoalData[0][0]}</p>
+                    <p>${specificGoalData.description}</p>
                 </div>
             </div>`;
 
             document.body.insertAdjacentHTML('beforeend', html); // Overlay tilføjes i bunden af body
 
-            specificGoalData[0][2].forEach(subGoal => { // For hvert undermål laves html som tilføjes til overlay container
+            specificGoalData.targets.forEach(subGoal => { // For hvert undermål laves html som tilføjes til overlay container
                 let subGoalHTML = `
                 <div class="sub-goal">
                     <h2>${subGoal.title}</h2>
@@ -97,7 +98,7 @@ async function setGoalView() {
         }
     }))
 
-    document.body.addEventListener('click', () => {
+    document.body.addEventListener('click', () => { // Ved klik på overlay fjernes overlay
         let overlay = document.querySelector('#overlay');
 
         if(overlay) {
