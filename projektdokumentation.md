@@ -1,6 +1,6 @@
 # global-goals
 
-## Arrow function
+## Arrow Function
 ```js
 document.body.addEventListener('click', () => {
     let overlay = document.querySelector('#overlay');
