@@ -27,11 +27,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 3rem;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 #goals-container {
@@ -64,6 +64,22 @@ h2 {
           align-items: center;
   cursor: pointer;
   margin: .5rem;
+}
+
+#goals-container .goal:nth-of-type(2) span:last-of-type, #goals-container .goal:nth-of-type(14) span:last-of-type, #goals-container .goal:nth-of-type(15) span:last-of-type {
+  width: 40%;
+}
+
+#goals-container .goal:nth-of-type(8) span:last-of-type, #goals-container .goal:nth-of-type(11) span:last-of-type {
+  font-size: 1.65rem;
+}
+
+#goals-container .goal:nth-of-type(9) span:last-of-type, #goals-container .goal:nth-of-type(12) span:last-of-type {
+  font-size: 1.55rem;
+}
+
+#goals-container .goal:nth-of-type(16) span:last-of-type {
+  font-size: 1.4rem;
 }
 
 #goals-container .goal div {

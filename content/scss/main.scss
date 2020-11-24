@@ -23,11 +23,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 #goals-container {
@@ -46,6 +46,34 @@ h2 {
         align-items: center;
         cursor: pointer;
         margin: .5rem;
+
+        &:nth-of-type(2), &:nth-of-type(14), &:nth-of-type(15) {
+
+            span:last-of-type {
+                width: 40%;
+            }
+        }
+
+        &:nth-of-type(8), &:nth-of-type(11) {
+
+            span:last-of-type {
+                font-size: 1.65rem;
+            }
+        }
+
+        &:nth-of-type(9), &:nth-of-type(12) {
+
+            span:last-of-type {
+                font-size: 1.55rem;
+            }
+        }
+
+        &:nth-of-type(16) {
+
+            span:last-of-type {
+                font-size: 1.4rem;
+            }
+        }
 
         div {
             height: 200px;

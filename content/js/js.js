@@ -15,6 +15,14 @@ async function handleGoalData() {
     let sortedGoalsData = []
 
     goalsData.forEach(goal => {
+        if (goal.title == 'Kvalitetsdannelse') {
+            console.log(goal.title)
+            goal.title = 'Kvalitets-dannelse'
+        } else if (goal.title == 'Klimaindsats') {
+            console.log(goal.title)
+            goal.title = 'Klima-indsats'
+        }
+
         let data = {title: goal.title, icon: goal.icon, color: `#${goal.color}`, id: goal.id};
 
         sortedGoalsData.push(data);
@@ -42,7 +50,7 @@ async function handleSpecificGoalData(id) {
         let specificData = {description: specificGoal.description, color: `#${specificGoal.color}`, targets: specificGoal.targets};
 
         sortedSpecificGoalData.push(specificData);
-    })
+    });
 
     return sortedSpecificGoalData;
 };
@@ -53,7 +61,6 @@ async function handleSpecificGoalData(id) {
 async function setGoalView() {
     let goalData = [...await handleGoalData()];
 
-    console.log(Array.isArray(goalData))
     const goalsContainer = document.querySelector('#goals-container'); // Container der skal indeholde alle mål
 
     // Printer fejl hvis input til funktion ikke er af typen array
