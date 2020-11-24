@@ -74,11 +74,11 @@ h2 {
   font-size: 1.65rem;
 }
 
-#goals-container .goal:nth-of-type(9) span:last-of-type, #goals-container .goal:nth-of-type(12) span:last-of-type {
+#goals-container .goal:nth-of-type(9) span:last-of-type {
   font-size: 1.55rem;
 }
 
-#goals-container .goal:nth-of-type(16) span:last-of-type {
+#goals-container .goal:nth-of-type(12) span:last-of-type, #goals-container .goal:nth-of-type(16) span:last-of-type {
   font-size: 1.4rem;
 }
 
