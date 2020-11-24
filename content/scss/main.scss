@@ -1,11 +1,33 @@
+@font-face {
+    font-family: apex-book;
+    src: url(/content/fonts/apexnew-book-opentype.woff);
+}
+
+@font-face {
+    font-family: giorgio-bold;
+    src: url("//db.onlinewebfonts.com/t/3744d23a5fa29385168833eee4190625.woff");
+}
+
 body {
     position: relative;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: apex-book;
     color: #fff;
     min-height: 100vh;
     display: flex;
     align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: giorgio-bold;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
 }
 
 #goals-container {
@@ -13,6 +35,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    min-width: 100%;
+    min-height: 100%;
 
     .goal {
         height: 250px;
@@ -24,7 +48,7 @@ body {
         margin: .5rem;
 
         div {
-            height: 150px;
+            height: 200px;
             width: 230px;
             display: flex;
             flex-direction: column;
@@ -34,11 +58,27 @@ body {
             h2 {
                 text-align: center;
                 margin: 0;
+                text-transform: uppercase;
+                display: flex;
+                width: 90%;
+
+                span {
+
+                    &:first-of-type {
+                        margin-right: 1rem;
+                        font-size: 3em;
+                        line-height: .75;
+                    }
+
+                    &:last-of-type {
+                        text-align: left;
+                    }
+                }
             }
     
             svg {
                 fill: #fff;
-                height: 40%;
+                height: 100px;
             }
         }
     }

@@ -53,13 +53,24 @@ async function handleSpecificGoalData(id) {
 async function setGoalView() {
     let goalData = [...await handleGoalData()];
 
+    console.log(Array.isArray(goalData))
     const goalsContainer = document.querySelector('#goals-container'); // Container der skal indeholde alle mål
+
+    // Printer fejl hvis input til funktion ikke er af typen array
+    try {
+        if(Array.isArray(goalData) != true) throw 'Input ikke array';
+    }
+    catch(err) {
+        let errMessage = `<p>${err}</p>`;
+        goalsContainer.insertAdjacentHTML('beforeend', errMessage);
+        goalsContainer.setAttribute('style', 'color:#000;');
+    }
 
     goalData.forEach(goal => { // For hvert mål laves HTML som tilføjes til vores container
         let imgHTML =
             `<div class="goal" data-id="${goal.id}" style="background-color:${goal.color}">
                 <div>
-                    <h2>${goal.title}</h2>
+                    <h2><span>${goal.id}</span><span>${goal.title}</span></h2>
                     ${goal.icon}
                 </div>
             </div>`;

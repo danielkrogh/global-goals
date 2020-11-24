@@ -52,5 +52,13 @@ let [specificGoalData] = specificGoalDataArray;
 ```
 ## Error Catching
 ```js
-
+// Printer fejl hvis input til funktion ikke er af typen array
+try {
+    if(Array.isArray(goalData) != true) throw 'Input ikke array';
+}
+catch(err) {
+    let errMessage = `<p>${err}</p>`;
+    goalsContainer.insertAdjacentHTML('beforeend', errMessage);
+    goalsContainer.setAttribute('style', 'color:#000;');
+}
 ```
